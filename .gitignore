@@ -3,8 +3,6 @@ output
 
 # build artifacts
 Gemfile.lock
-SwitchingToGitInVisualStudio.html
-SwitchingToGitInVisualStudio.pdf
 SwitchingToGitInVisualStudio.pdfmarks
 SwitchingToGitInVisualStudio.epub
 SwitchingToGitInVisualStudio-kf8.epub
