@@ -9,24 +9,23 @@ namespace :book do
       end
       date_string = Time.now.strftime("%Y-%m-%d")
       params = "--attribute revnumber='#{version_string}' --attribute revdate='#{date_string}'"
-      puts "Generating contributors list"
       `git shortlog -s | grep -v -E "(Straub|Chacon)" | cut -f 2- | column -c 120 > book/contributors.txt`
 
       puts "Converting to HTML..."
-      `bundle exec asciidoctor #{params} -a data-uri progit.asc`
-      puts " -- HTML output at progit.html"
+      `bundle exec asciidoctor #{params} -a data-uri SwitchingToGitInVisualStudio.asc`
+      puts " -- HTML output at SwitchingToGitInVisualStudio.html"
 
       puts "Converting to EPub..."
-      `bundle exec asciidoctor-epub3 #{params} progit.asc`
-      puts " -- Epub output at progit.epub"
+      `bundle exec asciidoctor-epub3 #{params} SwitchingToGitInVisualStudio.asc`
+      puts " -- Epub output at SwitchingToGitInVisualStudio.epub"
 
       puts "Converting to Mobi (kf8)..."
-      `bundle exec asciidoctor-epub3 #{params} -a ebook-format=kf8 progit.asc`
-      puts " -- Mobi output at progit.mobi"
+      `bundle exec asciidoctor-epub3 #{params} -a ebook-format=kf8 SwitchingToGitInVisualStudio.asc`
+      puts " -- Mobi output at SwitchingToGitInVisualStudio.mobi"
 
       puts "Converting to PDF... (this one takes a while)"
-      `bundle exec asciidoctor-pdf #{params} progit.asc 2>/dev/null`
-      puts " -- PDF output at progit.pdf"
+      `bundle exec asciidoctor-pdf #{params} SwitchingToGitInVisualStudio.asc 2>/dev/null`
+      puts " -- PDF output at SwitchingToGitInVisualStudio.pdf"
 
     end
   end
